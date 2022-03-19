@@ -1,0 +1,46 @@
+package ec.edu.uce.paralelo.hilos.paralelo;
+
+import java.util.concurrent.TimeUnit;
+
+import ec.edu.uce.paralelo.hilos.Cajero;
+
+public class GestorAtencionHilo extends Thread {
+
+	private CajeroHilo cajero;
+	private long tiempoInicial;
+	
+	public GestorAtencionHilo(CajeroHilo cajero, long tiempoInicial) {
+		super();
+		this.cajero = cajero;
+		this.tiempoInicial = tiempoInicial;
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		this.procesar(this.cajero, this.tiempoInicial);
+		
+	}
+	
+	public void procesar(CajeroHilo cajero, long tiempoInicial) {
+		System.out.println("Inicia atender cajero: " + cajero.getNombre());
+		for (Integer tiempo : cajero.getClientes()) {
+			this.atenderCliente(tiempo);
+		}
+		System.out.println("Finaliza atender cajero: " +  cajero.getNombre());
+		long tiempoFinal = System.currentTimeMillis();
+		long tiempoTranscurrido = (tiempoFinal - tiempoInicial) / 1000;
+		System.out.println(tiempoTranscurrido + " seg de atencion por: " + cajero.getNombre());
+	}
+
+	private void atenderCliente(Integer tiempo) {
+		System.out.println("Atendiendo al cleinte: " + tiempo);
+		System.out.println("Hilo: " + Thread.currentThread().getName());
+		try {
+			TimeUnit.SECONDS.sleep(tiempo);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}
