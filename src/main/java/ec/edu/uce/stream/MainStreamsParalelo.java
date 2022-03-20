@@ -22,6 +22,7 @@ public class MainStreamsParalelo {
 		long timepoFin = System.currentTimeMillis();
 		long timepo = (timepoFin - timepoInico) / 1000;
 		System.out.println("Tiempo Total: " + timepo + " seg");
+		
 	}
 	
 	private static String convertirNumero(Integer numero) {
