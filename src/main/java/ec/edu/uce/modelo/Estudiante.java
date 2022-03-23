@@ -24,6 +24,17 @@ public class Estudiante {
 	@Column(name = "estu_apellido")
 	private String apellido;
 	
+	public Estudiante() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public Estudiante(String nombre, String apellido) {
+		this.nombre = nombre;
+		this.apellido = apellido;
+	}
+
+
+
 	// SET-GET
 	public Integer getId() {
 		return id;
