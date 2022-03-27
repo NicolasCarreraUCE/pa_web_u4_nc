@@ -27,7 +27,7 @@ public class EstudianteRepoImpl implements IEstudianteRepo {
 	@Override
 	public List<Estudiante> buscarTodos() {
 		// TODO Auto-generated method stub
-		TypedQuery<Estudiante> myQuery = this.entityManager.createQuery("SELECT e FROM Estidiante e", Estudiante.class);
+		TypedQuery<Estudiante> myQuery = this.entityManager.createQuery("SELECT e FROM Estudiante e", Estudiante.class);
 		return myQuery.getResultList();
 	}
 
@@ -40,7 +40,7 @@ public class EstudianteRepoImpl implements IEstudianteRepo {
 	@Override
 	public void actualizar(Estudiante estudiante) {
 		// TODO Auto-generated method stub
-		this.entityManager.remove(estudiante);
+		this.entityManager.merge(estudiante);
 	}
 
 	@Override
